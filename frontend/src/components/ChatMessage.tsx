@@ -1,28 +1,28 @@
-
-import React from "react";
+import React from 'react'
 // import { BotIcon, UserRound } from "lucide-react";
-
+import ReactMarkdown from 'react-markdown'
 export type MessageType = {
-  id: string;
-  content: string;
-  sender: "user" | "bot";
-  timestamp: Date;
-  isTyping?: boolean;
-};
+  id: string
+  content: string
+  sender: 'user' | 'bot'
+  timestamp: Date
+  isTyping?: boolean
+}
 
 interface ChatMessageProps {
-  message: MessageType;
-  isLast: boolean;
+  message: MessageType
+  isLast: boolean
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, isLast }) => {
-  const isUser = message.sender === "user";
+  const isUser = message.sender === 'user'
 
   return (
     <div
-      className={`flex ${isUser ? "justify-end" : "justify-start"
-        } mb-4 animate-slide-up opacity-0`}
-      style={{ animationDelay: "100ms", animationFillMode: "forwards" }}
+      className={`flex ${
+        isUser ? 'justify-end' : 'justify-start'
+      } mb-4 animate-slide-up opacity-0`}
+      style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
     >
       {/* {!isUser && (
         <div className="mr-2 flex-shrink-0">
@@ -33,17 +33,20 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isLast }) => {
       )} */}
 
       <div
-        className={`max-w-[85%] w-fit rounded-[5px] py-2 px-4 message-transition ${isUser
-          ? "bg-chat-bubble-user dark:bg-chat-bubble-user-dark text-white"
-          : "bg-chat-bubble-bot dark:bg-chat-bubble-bot-dark text-foreground shadow-sm"
-          }`}
+        className={`max-w-[85%] w-fit rounded-[5px] py-2 px-4 message-transition ${
+          isUser
+            ? 'bg-chat-bubble-user dark:bg-chat-bubble-user-dark text-white'
+            : 'bg-chat-bubble-bot dark:bg-chat-bubble-bot-dark text-foreground shadow-sm'
+        }`}
       >
         {message.isTyping ? (
-          <span className="typing-indicator text-sm md:text-base">Thinking</span>
+          <span className='typing-indicator text-sm md:text-base'>
+            Thinking
+          </span>
         ) : (
-          <p className="whitespace-pre-wrap text-sm sm:text-base">
-            {message.content}
-          </p>
+          <div className='whitespace-pre-wrap text-sm sm:text-base'>
+            <ReactMarkdown>{message.content}</ReactMarkdown>
+          </div>
         )}
       </div>
 
@@ -55,7 +58,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isLast }) => {
         </div>
       )} */}
     </div>
-  );
-};
+  )
+}
 
-export default ChatMessage;
+export default ChatMessage
