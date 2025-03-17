@@ -1,0 +1,34 @@
+# Virtual Environment
+venv/
+.env
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Vector Stores & Database Files
+models/
+
+# Logs
+*.log
+logs/
+
+# IDE & OS-specific files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Node.js (if applicable for frontend)
+node_modules/
+*.lock
+dist/
+build/
+.cache/
+
+# Misc
+pip-log.txt
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
